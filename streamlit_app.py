@@ -33,10 +33,6 @@ fruit_options_df = pd.DataFrame(rows, columns=['FRUIT_NAME'])
 # Convert the 'FRUIT_NAME' column to a list
 fruit_options = fruit_options_df['FRUIT_NAME'].tolist()
 
-# Close the cursor and connection
-cur.close()
-conn.close()
-
 ingredients_list = st.multiselect('Choose up to 5 ingredients:',fruit_options,max_selections=5)
 if ingredients_list:
 
@@ -57,3 +53,7 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         
         st.success('Your Smoothie is ordered!,'+name_on_order,icon="✅")
+
+# Close the cursor and connection
+cur.close()
+conn.close()
