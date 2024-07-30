@@ -37,7 +37,7 @@ fruit_options = fruit_options_df['FRUIT_NAME'].tolist()
 cur.close()
 conn.close()
 
-ingredients_list = st.multiselect('Choose up to 5 ingredients:',my_dataframe,max_selections=5)
+ingredients_list = st.multiselect('Choose up to 5 ingredients:',fruit_options,max_selections=5)
 if ingredients_list:
 
     ingredients_string=''
