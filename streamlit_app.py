@@ -1,7 +1,7 @@
 #Import python packages
 import streamlit as st
-import pandas as pd
-import snowflake.connector
+#import pandas as pd
+#import snowflake.connector
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -13,7 +13,10 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("The name on your smoothie will be:", name_on_order)
 
-conn = snowflake.connector.connect(
+cnx =st.connection("Snowflake")
+session =cnx.session()
+
+'''conn = snowflake.connector.connect(
     user = 'evanssteve16',
     password = 'Learn@1308',
     account = 'ZMHFBCH.ABB08608',
@@ -26,6 +29,7 @@ cur = conn.cursor()
 
 cur.execute("SELECT FRUIT_NAME FROM smoothies.public.fruit_options")
 rows = cur.fetchall()
+'''
 
 # Convert the results to a Pandas DataFrame
 fruit_options_df = pd.DataFrame(rows, columns=['FRUIT_NAME'])
