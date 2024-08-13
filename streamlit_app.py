@@ -11,13 +11,6 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie:")
 st.write("The name on your smoothie will be:", name_on_order)
 
-#st.write("account =", st.secrets["account"])
-#st.write("user =", st.secrets["user"])
-#st.write("password =", st.secrets["password"])
-#st.write("role =", st.secrets["role"])
-#st.write("warehouse =", st.secrets["warehouse"])
-#st.write("database =", st.secrets["database"])
-#st.write("client_session_keep_alive =", st.secrets["client_session_keep_alive"])
 
 cnx =st.connection("Snowflake")
 session =cnx.session()
@@ -33,7 +26,7 @@ if ingredients_list:
         ingredients_string += fruit_chosen+' '
 
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
-            values ('""" + ingredients_string + """','"""+ name_on_order+"""')"""
+            values ('""" + ingredients_string + """', '"""+ name_on_order+"""')"""
 
     time_to_insert = st.button('Submit Order')
 
